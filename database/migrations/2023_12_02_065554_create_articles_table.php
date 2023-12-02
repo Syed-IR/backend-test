@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->bigInteger('source_id')->nullable()->unsigned();
             $table->foreign('source_id')->references('id')->on('sources')->onDelete('cascade');
-            $table->string('author', 100)->nullable();
+            $table->string('author', 191)->nullable();
             $table->string('title', 191);
             $table->text('description')->nullable();
             $table->text('url')->nullable();
