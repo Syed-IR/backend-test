@@ -14,7 +14,7 @@ class ArticleService
     $newsSources        = config('newsSources');
     $newsSourceService  = new SourceDataTransformService;
     $sourceService      = new SourceService;
-    $categories         = Category::limt(5)->get();
+    $categories         = Category::all();
     $sources            = Source::all();
 
     foreach ($newsSources as $newsSource => $newsSourceConfig) {
