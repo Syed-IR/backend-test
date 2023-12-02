@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class HttpService
@@ -26,9 +27,8 @@ class HttpService
 
       return $response->json();
     } catch (\Throwable $th) {
-      // info("HTTP_SERVICE_ERROR");
-      // info($th);
-      throw($th);
+      info("HTTP_SERVICE_ERROR");
+      info($th);
       return false;
     }
   }
@@ -38,6 +38,7 @@ class HttpService
    */
   private static function prepareUrl($newsSources, $category)
   {
-    return "{$newsSources["url"]}?q={$category->name}&{$newsSources["from_param"]}=2023-11-27&{$newsSources["to_param"]}=2023-11-27&{$newsSources["api_key_param"]}={$newsSources["api_key"]}";
+    $currentDate = Carbon::now()->format("Y-m-d");
+    return "{$newsSources["url"]}?q={$category->name}&{$newsSources["from_param"]}={$currentDate}&{$newsSources["to_param"]}={$currentDate}&{$newsSources["api_key_param"]}={$newsSources["api_key"]}";
   }
 }
