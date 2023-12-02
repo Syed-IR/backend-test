@@ -32,6 +32,7 @@ class ArticleService
           if ($result['is_new'])
             $sources[$sources->count()] = $source;
 
+          // Append remaining details for the article
           $articleToInsert = array_map(function($artcile) use($category, $source, $now) {
             return [...$artcile, "category_id" => $category->id, "source_id" => $source->id, "created_at" => $now, "updated_at" => $now];
           }, $artciles);
