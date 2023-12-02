@@ -38,6 +38,6 @@ class HttpService
    */
   private static function prepareUrl($newsSources, $category)
   {
-    return "{$newsSources["url"]}?q={$category->name}&from=2023-11-27&to=2023-11-27&{$newsSources["api_key_param"]}={$newsSources["api_key"]}";
+    return "{$newsSources["url"]}?q={$category->name}&{$newsSources["from_param"]}=2023-11-27&{$newsSources["to_param"]}=2023-11-27&{$newsSources["api_key_param"]}={$newsSources["api_key"]}";
   }
 }
