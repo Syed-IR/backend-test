@@ -20,7 +20,6 @@ class ArticleService
     foreach ($newsSources as $newsSource => $newsSourceConfig) {
       foreach ($categories as $category) {
         $data = HttpService::fetch($newsSourceConfig, $category);
-        // $data = $this->data();
         $mappedData = $newsSourceService->$newsSource($data);
         $now = Carbon::now();
   
@@ -42,10 +41,4 @@ class ArticleService
       }
     }
   }
-
-  // private function data()
-  // {
-  //   $data = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/data.json");
-  //   return json_decode($data, true);
-  // }
 }
