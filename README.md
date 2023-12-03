@@ -21,7 +21,7 @@ Run scheduler
 
 The scheduler is set in a way that it'll data of current date, if you want to get data of another date then edit `line 42` in `HttpService::prepareUrl`
 
-> Since this is a pilot project duplication prevention is not addressed
+> Since this is a pilot project data duplication prevention is not addressed
 
 ## Swagger Api Docs
 `http://localhost/apidocs#/`
