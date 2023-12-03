@@ -22,7 +22,7 @@ Populate categories
 Run scheduler
 `php artisan schedule:run`
 
-`$schedule->command(UpdateNewsCommand::class)->daily()->withoutOverlapping();`
+`$schedule->command(UpdateNewsCommand::class)->daily();`
 
 The scheduler is set in a way that it'll data of current date, if you want to get data of another date then edit `line 42` in `HttpService::prepareUrl`
 
