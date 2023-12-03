@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\SourceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['throttle:api'])->group(function () {
     Route::get('test', [ArticleController::class, 'test']);
     Route::get('search', [ArticleController::class, 'search']);
+    Route::get('categories', [CategoryController::class, 'index']);
+    Route::get('sources', [SourceController::class, 'index']);
 });

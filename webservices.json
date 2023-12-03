@@ -1,0 +1,192 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Backend - Test",
+      "version": "1.0.0",
+      "description": "This documentation is for news aggregator test",
+      "contact": {
+        "email": "syed.128@outlook.com"
+      }
+    },
+    "tags": [
+      {
+        "name": "Filters",
+        "description": "API operations related to search filters"
+      },
+      {
+        "name": "Search",
+        "description": "API operations related to search"
+      }
+    ],
+    "paths": {
+      "/api/search": {
+        "get": {
+          "summary": "Search our news database",
+          "description": "Retrieves articles based on filter and keyword.",
+          "operationId": "search",
+          "tags": ["Search"],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "q",
+              "example": "style",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "author",
+              "example": "Mark",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "category_id",
+              "example": "1",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            {
+              "name": "source_id",
+              "example": "1",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            {
+              "name": "from",
+              "example": "2023-11-27",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Search results",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "success": true,
+                    "data": {
+                      "total_results": 1,
+                      "articles": [
+                        {
+                          "category": "Learning",
+                          "source": "etf daily news",
+                          "author": "MarketBeat News",
+                          "title": "Electronic Arts Inc. (NASDAQ:EA) Shares Sold by MYDA Advisors LLC",
+                          "description": "MYDA Advisors LLC reduced its position in shares of Electronic Arts Inc. (NASDAQ:EA – Free Report) by 61.1% during the second quarter, according to the company in its most recent Form 13F filing with the Securities and Exchange Commission. The institutional i…",
+                          "url": "https://www.etfdailynews.com/2023/11/27/electronic-arts-inc-nasdaqea-shares-sold-by-myda-advisors-llc/",
+                          "published_at": "2023-11-27T16:52:47.000000Z"
+                        }
+                      ]
+                    },
+                    "message": "Search results."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/categories": {
+        "get": {
+          "summary": "Get categories from database",
+          "description": "",
+          "operationId": "category-filter",
+          "tags": ["Filters"],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Category List",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "success": true,
+                    "data": [
+                      {
+                        "id": 1,
+                        "name": "Arts"
+                      },
+                      {
+                        "id": 2,
+                        "name": "Automobiles"
+                      }
+                    ],
+                    "message": "List of category."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/sources": {
+        "get": {
+          "summary": "Get sources from the database",
+          "description": "",
+          "operationId": "source-filter",
+          "tags": ["Filters"],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Source List",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "success": true,
+                    "data": [
+                      {
+                        "id": 1,
+                        "name": "the new york times"
+                      },
+                      {
+                        "id": 2,
+                        "name": "bbc news"
+                      }
+                    ],
+                    "message": "List of source."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "servers": [
+      {
+        "url": "http://test.local"
+      }
+    ]
+  }
+  
