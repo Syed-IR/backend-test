@@ -20,7 +20,7 @@ class ArticleService
     $newsSources        = config('newsSources');
     $newsSourceService  = new SourceDataTransformService;
     $sourceService      = new SourceService;
-    $categories         = Category::limit(5)->get();
+    // $categories         = Category::limit(5)->get(); // enable it to work within development source api env
     $categories         = Category::all();
     $sources            = Source::all();
 
