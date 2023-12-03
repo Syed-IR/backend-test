@@ -1,7 +1,7 @@
 ## Instructions
 
-Laravel v10.34.2
-PHP v8.2.12
+`Laravel v10.34.2`
+`PHP v8.2.12`
 
 new sources config file
 `app\config\newsSources.php`
