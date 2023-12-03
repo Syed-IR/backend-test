@@ -3,6 +3,11 @@
 `Laravel v10.34.2`
 `PHP v8.2.12`
 
+Api token for each source is attached in the email body
+- `NEWS_API_KEY=`
+- `GUARDIAN_API_KEY=`
+- `NYT_API_KEY=`
+
 new sources config file
 `app\config\newsSources.php`
 
