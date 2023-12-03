@@ -22,9 +22,6 @@ class CategorySeeder extends Seeder
             "name" => "Automobiles"
           ],
           [
-            "name" => "Autos"
-          ],
-          [
             "name" => "Blogs"
           ],
           [
@@ -35,9 +32,6 @@ class CategorySeeder extends Seeder
           ],
           [
             "name" => "Business"
-          ],
-          [
-            "name" => "Corrections"
           ],
           [
             "name" => "Crosswords & Games"
@@ -70,9 +64,6 @@ class CategorySeeder extends Seeder
             "name" => "Movies"
           ],
           [
-            "name" => "Multimedia"
-          ],
-          [
             "name" => "National"
           ],
           [
@@ -80,12 +71,6 @@ class CategorySeeder extends Seeder
           ],
           [
             "name" => "Olympics"
-          ],
-          [
-            "name" => "Opinion"
-          ],
-          [
-            "name" => "Public Editor"
           ],
           [
             "name" => "Real Estate"
@@ -97,19 +82,7 @@ class CategorySeeder extends Seeder
             "name" => "Sports"
           ],
           [
-            "name" => "Style"
-          ],
-          [
-            "name" => "T Magazine"
-          ],
-          [
-            "name" => "T:Style"
-          ],
-          [
             "name" => "Technology"
-          ],
-          [
-            "name" => "The Public Editor"
           ],
           [
             "name" => "The Upshot"
@@ -118,22 +91,10 @@ class CategorySeeder extends Seeder
             "name" => "Theater"
           ],
           [
-            "name" => "Times Topics"
-          ],
-          [
-            "name" => "TimesMachine"
-          ],
-          [
-            "name" => "Topics"
-          ],
-          [
             "name" => "Travel"
           ],
           [
             "name" => "Universal"
-          ],
-          [
-            "name" => "UrbanEye"
           ],
           [
             "name" => "World"

@@ -1,16 +1,13 @@
 <?php
 namespace App\Services;
 
-use App\Models\Article;
-use App\Models\Category;
 use App\Models\Source;
-use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class SourceService
 {
   /**
-   * 
+   * Return source if exists else create it 
    */
   public function filterOrCreate($sources, $sourceToFilter): array 
   {

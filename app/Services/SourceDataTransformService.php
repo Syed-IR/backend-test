@@ -10,7 +10,7 @@ class SourceDataTransformService implements SourceInterface
   private $mappedArticles = [];
 
   /**
-   * 
+   * Map the source data to our db structure
    */
   public function newsapi($data): array
   {
@@ -24,7 +24,7 @@ class SourceDataTransformService implements SourceInterface
   }
   
   /**
-   * 
+   * Map the source data to our db structure
    */
   public function guardian($data): array
   {
@@ -33,7 +33,7 @@ class SourceDataTransformService implements SourceInterface
   }
   
   /**
-   * 
+   * Map the source data to our db structure
    */
   public function nyt($data): array
   {
