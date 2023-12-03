@@ -11,7 +11,8 @@ return [
             'api_key' => 'apiKey',
             'from' => 'from',
             'to' => 'to',
-        ]
+        ],
+        'unique_params' => null
     ],
    
     'guardian' => [
@@ -25,7 +26,8 @@ return [
             'from' => 'from-date',
             'to' => 'to-date',
             'pageSize' => 'page-size',
-        ]
+        ],
+        'unique_params' => 'show-tags=contributor&show-fields=trailText,lastModified&'
     ],
    
     'nyt' => [
@@ -37,7 +39,8 @@ return [
             'api_key' => 'api-key',
             'from' => 'begin_date',
             'to' => 'end_date',
-        ]
+        ],
+        'unique_params' => null
     ],
     
 ];

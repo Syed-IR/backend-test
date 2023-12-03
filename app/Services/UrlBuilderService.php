@@ -44,6 +44,11 @@ class UrlBuilderService
    */
   private $apiKey;
 
+  /**
+   * @var string
+   */
+  private $uniqueParams;
+
   public function __construct($newsSource)
   {
     $this->newsSource     = $newsSource;
@@ -51,6 +56,7 @@ class UrlBuilderService
     $this->hasPagination  = $newsSource["has_pagination"];
     $this->pageSize       = $newsSource["has_pagination"] ? $newsSource["pageSize"] : null;
     $this->apiKey         = $newsSource["api_key"];
+    $this->uniqueParams   = $newsSource["unique_params"];
   }
 
   /**
@@ -101,10 +107,13 @@ class UrlBuilderService
 
     if ($this->to)
       $url .= "{$this->newsSource["param_name"]["to"]}={$this->to}&";
-    
+
     if ($this->hasPagination)
       $url .= "{$this->newsSource["param_name"]["pageSize"]}={$this->pageSize}&";
-    
+
+    if ($this->uniqueParams)
+      $url .= $this->uniqueParams;
+
     if ($this->apiKey)
       $url .= "{$this->newsSource["param_name"]["api_key"]}={$this->apiKey}";
 
