@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::middleware(['throttle:api'])->group(function () {
-    Route::get('test', [ArticleController::class, 'test']);
     Route::get('search', [ArticleController::class, 'search']);
     Route::get('categories', [CategoryController::class, 'index']);
     Route::get('sources', [SourceController::class, 'index']);

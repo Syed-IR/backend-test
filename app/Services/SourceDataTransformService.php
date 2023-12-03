@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Interfaces\SourceInterface;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class SourceDataTransformService implements SourceInterface
@@ -21,9 +22,9 @@ class SourceDataTransformService implements SourceInterface
         $this->mapData($article['source']['name'], $article['author'], $article['title'], $article['description'], $article['url'], $article['publishedAt']);
       }
     } catch (\Throwable $th) {
-      info("NEWSAPI");
-      info($data);
-      info($th);
+      Log::channel('cron_log')->info("NEWSAPI");
+      Log::channel('cron_log')->info(json_encode($data));
+      Log::channel('cron_log')->info($th);
     }
 
     return $this->mappedArticles;
@@ -34,8 +35,24 @@ class SourceDataTransformService implements SourceInterface
    */
   public function guardian($data): array
   {
+    try {
+      $articles = $data["response"]["results"];
+      $source   = "The Guardian";
+  
+      foreach ($articles as $article) {
+        $author       = array_key_exists(0, $article['tags']) ? $article['tags'][0]['webTitle'] : null;
+        $description  = array_key_exists('trailText', $article['fields']) ? $article['fields']['trailText'] : null;
+        $pub_date     = array_key_exists('lastModified', $article['fields']) ? $article['fields']['lastModified'] : null;
+        
+        $this->mapData($source, $author, $article['webTitle'], $description, $article['webUrl'], $pub_date);
+      }
+    } catch (\Throwable $th) {
+      Log::channel('cron_log')->info("GUARDIAN");
+      Log::channel('cron_log')->info(json_encode($data));
+      Log::channel('cron_log')->info($th);
+    }
 
-    return [];
+    return $this->mappedArticles;
   }
   
   /**
@@ -51,9 +68,9 @@ class SourceDataTransformService implements SourceInterface
         $this->mapData($source, $article['byline']['original'], $article['headline']['main'], $article['abstract'], $article['web_url'], $article['pub_date']);
       }
     } catch (\Throwable $th) {
-      info("NYT");
-      info($data);
-      info($th);
+      Log::channel('cron_log')->info("NYT");
+      Log::channel('cron_log')->info(json_encode($data));
+      Log::channel('cron_log')->info($th);
     }
 
     return $this->mappedArticles;

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class HttpService
 {
@@ -27,8 +28,8 @@ class HttpService
 
       return $response->json();
     } catch (\Throwable $th) {
-      info("HTTP_SERVICE_ERROR");
-      info($th);
+      Log::channel('cron_log')->info("HTTP_SERVICE_ERROR");
+      Log::channel('cron_log')->info($th);
       return false;
     }
   }

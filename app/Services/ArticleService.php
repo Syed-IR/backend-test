@@ -20,15 +20,15 @@ class ArticleService
     $newsSources        = config('newsSources');
     $newsSourceService  = new SourceDataTransformService;
     $sourceService      = new SourceService;
+    $categories         = Category::limit(5)->get();
     $categories         = Category::all();
     $sources            = Source::all();
 
     foreach ($newsSources as $newsSource => $newsSourceConfig) {
       foreach ($categories as $category) {
-        $data = HttpService::fetch($newsSourceConfig, $category);
-        // $data = $this->data();
+        $data       = HttpService::fetch($newsSourceConfig, $category);
         $mappedData = $newsSourceService->$newsSource($data);
-        $now = Carbon::now();
+        $now        = Carbon::now();
 
         foreach ($mappedData as $sourceToFilter => $artciles) {
           $result = $sourceService->filterOrCreate($sources, $sourceToFilter);
@@ -85,10 +85,4 @@ class ArticleService
         }
       )->with(["category", "source"])->orderBy("published_at", 'desc')->get();
   }
-
-  // private function data()
-  // {
-  //   $data = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/data.json");
-  //   return json_decode($data, true);
-  // }
 }

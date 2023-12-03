@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command(UpdateNewsCommand::class)->daily()->withoutOverlapping();
+        $schedule->command(UpdateNewsCommand::class)->daily();
         // $schedule->command('inspire')->everySecond();
 
     }
