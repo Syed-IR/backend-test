@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use Carbon\Carbon;
@@ -7,22 +8,21 @@ use Illuminate\Support\Facades\Http;
 class HttpService
 {
   /**
-   * Fetch data from the news sources
-   * @param array $newsSources
+   * Fetch data from the news source
+   * @param array $newsSource
    * @param \App\Models\Category $category
    * @return json|bool
    */
-  public static function fetch($newsSources, $category)
+  public static function fetch($newsSource, $category)
   {
     try {
-      $url  = self::prepareUrl($newsSources, $category);
+      $url  = self::prepareUrl($newsSource, $category);
 
       $response = Http::acceptJson()
         ->withHeaders([
           'Content-Type' => 'application/json',
           'Accept'       => 'application/json'
         ])
-        ->withToken($newsSources['api_key'])
         ->get($url);
 
       return $response->json();
@@ -36,9 +36,17 @@ class HttpService
   /**
    * @return string
    */
-  private static function prepareUrl($newsSources, $category)
+  private static function prepareUrl($newsSource, $category)
   {
     $currentDate = Carbon::now()->format("Y-m-d");
-    return "{$newsSources["url"]}?q={$category->name}&{$newsSources["from_param"]}={$currentDate}&{$newsSources["to_param"]}={$currentDate}&{$newsSources["api_key_param"]}={$newsSources["api_key"]}";
+
+    $urlBuilderService = new UrlBuilderService($newsSource);
+    $url = $urlBuilderService
+      ->setQuery($category->name)
+      ->setFrom($currentDate)
+      ->setTo($currentDate)
+      ->build();
+
+    return $url;
   }
 }
