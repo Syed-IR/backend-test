@@ -14,10 +14,16 @@ class SourceDataTransformService implements SourceInterface
    */
   public function newsapi($data): array
   {
-    $articles = $data['articles'];
-
-    foreach ($articles as $article) {
-      $this->mapData($article['source']['name'], $article['author'], $article['title'], $article['description'], $article['url'], $article['publishedAt']);
+    try {
+      $articles = $data['articles'];
+  
+      foreach ($articles as $article) {
+        $this->mapData($article['source']['name'], $article['author'], $article['title'], $article['description'], $article['url'], $article['publishedAt']);
+      }
+    } catch (\Throwable $th) {
+      info("NEWSAPI");
+      info($data);
+      info($th);
     }
 
     return $this->mappedArticles;
@@ -37,11 +43,17 @@ class SourceDataTransformService implements SourceInterface
    */
   public function nyt($data): array
   {
-    $articles = $data["response"]["docs"];
-    $source   = "The New York Times";
-    
-    foreach ($articles as $article) {
-      $this->mapData($source, $article['byline']['original'], $article['headline']['main'], $article['abstract'], $article['web_url'], $article['pub_date']);
+    try {
+      $articles = $data["response"]["docs"];
+      $source   = "The New York Times";
+      
+      foreach ($articles as $article) {
+        $this->mapData($source, $article['byline']['original'], $article['headline']['main'], $article['abstract'], $article['web_url'], $article['pub_date']);
+      }
+    } catch (\Throwable $th) {
+      info("NYT");
+      info($data);
+      info($th);
     }
 
     return $this->mappedArticles;
