@@ -22,28 +22,16 @@ class CategorySeeder extends Seeder
             "name" => "Automobiles"
           ],
           [
-            "name" => "Blogs"
-          ],
-          [
-            "name" => "Books"
-          ],
-          [
-            "name" => "Booming"
+            "name" => "Movies"
           ],
           [
             "name" => "Business"
           ],
           [
-            "name" => "Crosswords & Games"
-          ],
-          [
-            "name" => "Dining & Wine"
-          ],
-          [
             "name" => "Education"
           ],
           [
-            "name" => "Fashion & Style"
+            "name" => "Fashion"
           ],
           [
             "name" => "Food"
@@ -55,50 +43,8 @@ class CategorySeeder extends Seeder
             "name" => "Job Market"
           ],
           [
-            "name" => "Learning"
-          ],
-          [
             "name" => "Magazine"
-          ],
-          [
-            "name" => "Movies"
-          ],
-          [
-            "name" => "National"
-          ],
-          [
-            "name" => "Obituaries"
-          ],
-          [
-            "name" => "Olympics"
-          ],
-          [
-            "name" => "Real Estate"
-          ],
-          [
-            "name" => "Science"
-          ],
-          [
-            "name" => "Sports"
-          ],
-          [
-            "name" => "Technology"
-          ],
-          [
-            "name" => "The Upshot"
-          ],
-          [
-            "name" => "Theater"
-          ],
-          [
-            "name" => "Travel"
-          ],
-          [
-            "name" => "Universal"
-          ],
-          [
-            "name" => "World"
-          ],
+          ]
         ];
 
         $timestamp = Carbon::now();

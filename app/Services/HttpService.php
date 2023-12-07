@@ -39,13 +39,13 @@ class HttpService
    */
   private static function prepareUrl($newsSource, $category)
   {
-    $currentDate = Carbon::now()->format("Y-m-d");
+    $yesterdayDate = Carbon::now()->subDay()->format("Y-m-d");
 
     $urlBuilderService = new UrlBuilderService($newsSource);
     $url = $urlBuilderService
       ->setQuery($category->name)
-      ->setFrom($currentDate)
-      ->setTo($currentDate)
+      ->setFrom($yesterdayDate)
+      ->setTo($yesterdayDate)
       ->build();
 
     return $url;
